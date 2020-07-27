@@ -15,7 +15,9 @@ The key test is that a *business sponsor could request that the current developm
 software can be deployed into production at a moment's notice* - and nobody would bat an eyelid, let alone panic.
 
 **How are Machine Learning Applications different from usual Software Applications**
+
 The process for developing, deploying, and continuously improving them is much more complex compared 
 traditional software, such as a web service or a mobile application. Since ML Applications are subject to change in 
 three axis: the code itself, the model, and the data. Their behaviour is often complex 
 and hard to predict, and they are harder to test, harder to explain, and harder to improve
+
