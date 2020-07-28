@@ -1,0 +1,3 @@
+model:
+  version: latest
+  url: http://docker.for.mac.localhost:6000

@@ -1,0 +1,101 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "gre_score": 334,
+            "toefl_score": 80,
+            "ug_univ_rating": 4,
+            "sop_score": 3.5,
+            "lor_score": 4,
+            "gpa": 3.9,
+            "research": 1
+        }
+    ],
+    "required": [
+        "gre_score",
+        "toefl_score",
+        "ug_univ_rating",
+        "sop_score",
+        "lor_score",
+        "gpa",
+        "research"
+    ],
+    "properties": {
+        "gre_score": {
+            "$id": "#/properties/gre_score",
+            "type": "integer",
+            "title": "The gre_score schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                334
+            ]
+        },
+        "toefl_score": {
+            "$id": "#/properties/toefl_score",
+            "type": "integer",
+            "title": "The toefl_score schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                80
+            ]
+        },
+        "ug_univ_rating": {
+            "$id": "#/properties/ug_univ_rating",
+            "type": "integer",
+            "title": "The ug_univ_rating schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                4
+            ]
+        },
+        "sop_score": {
+            "$id": "#/properties/sop_score",
+            "type": "number",
+            "title": "The sop_score schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "examples": [
+                3.5
+            ]
+        },
+        "lor_score": {
+            "$id": "#/properties/lor_score",
+            "type": "integer",
+            "title": "The lor_score schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                4
+            ]
+        },
+        "gpa": {
+            "$id": "#/properties/gpa",
+            "type": "number",
+            "title": "The gpa schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "examples": [
+                3.9
+            ]
+        },
+        "research": {
+            "$id": "#/properties/research",
+            "type": "integer",
+            "title": "The research schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+                1
+            ]
+        }
+    },
+    "additionalProperties": true
+}
