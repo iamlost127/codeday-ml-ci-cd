@@ -1,20 +1,37 @@
 import os
+import xml.etree.ElementTree as ET
 
 import numpy as np
+import requests
 
 from flask import Flask, request, jsonify, Response
 from joblib import load
 
 
 class ModelLoader:
+
+    AZURE_MODEL_CONTAINER = 'https://codeday.blob.core.windows.net/codeday-ml-ci-cd'
+
     def __init__(self):
-        all_versions = [int(x.split('.')[1][1:]) for x in os.listdir('models')]
+        model_list_url = ModelLoader.AZURE_MODEL_CONTAINER + '?restype=container&comp=list&prefix=models'
+        model_list_res = requests.get(model_list_url)
+
+        root = ET.fromstring(model_list_res.text)
+        all_models = [blob.find('Name').text for blob in root.find('.').find('Blobs').findall('Blob')]
+        all_versions = [int(x.split('.')[1][1:]) for x in all_models]
         latest = max(all_versions)
         self.all_models = dict()
         self.latest_version = 'v' + str(latest)
 
-        for f in os.listdir('models'):
-            self.all_models[f.split('.')[1]] = load('models/' + f)
+        for m in all_models:
+            url = ModelLoader.AZURE_MODEL_CONTAINER + '/' + m
+            res = requests.get(url)
+            with open('model.tmp', 'wb') as f:
+                f.write(res.content)
+
+            mo = load('model.tmp')
+            os.remove('model.tmp')
+            self.all_models[m.split('.')[1]] = mo
 
 
 model_loader = ModelLoader()
