@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 5000
 
 RUN apt-get -y update
-RUN apt-get -y install unixodbc
+RUN apt-get -y install unixodbc-dev
 
 RUN pip install Flask==1.1.2
 RUN pip install requests==2.24.0
