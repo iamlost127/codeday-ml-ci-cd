@@ -15,7 +15,7 @@ def _load_schema():
 
 
 SCHEMA = _load_schema()
-config = AppConfig()()
+app_config = AppConfig()
 
 
 @app.route('/admit', methods=['POST'])
@@ -23,8 +23,8 @@ def admit_prod():
     data = request.get_json()
     try:
         validate(instance=data, schema=SCHEMA)
-        url = config['model']['url']
-        version = config['model']['version']
+        url = app_config.config['model']['serving']['url']
+        version = app_config.config['model']['serving']['version']
 
         url = url + '/predict' if version == 'latest' else url + '/' + version + '/predict'
         response = requests.post(url=url, json=data)
