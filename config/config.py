@@ -1,3 +1,4 @@
+import logging
 import sched
 import time
 
@@ -5,20 +6,21 @@ import pyodbc
 import requests
 import yaml
 
+LOGGER = logging.getLogger(__name__)
+
 
 class AppConfig:
     def __init__(self):
         self.config = None
+        self.scheduler = sched.scheduler(time.time, time.sleep)
         self._load()
+        self.scheduler.run()
 
     def _load(self):
         with requests.get('https://codeday.blob.core.windows.net/codeday-ml-ci-cd/resources/config.yaml') as res:
             self.config = yaml.safe_load(res.text)
-
-    def _schedule(self):
-        scheduler = sched.scheduler(time.time, time.sleep)
-        scheduler.enter(5 * 60, 1, self._load)
-        scheduler.run()
+        self.scheduler.enter(60, 1, self._load)
+        LOGGER.debug('loaded latest application configuration')
 
 
 class DBConfig:

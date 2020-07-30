@@ -1,4 +1,7 @@
+import logging
 import os
+import sched
+import time
 import xml.etree.ElementTree as ET
 
 import numpy as np
@@ -8,11 +11,21 @@ from flask import Flask, request, jsonify, Response
 from joblib import load
 
 
+LOGGER = logging.getLogger(__name__)
+
+
 class ModelLoader:
 
     AZURE_MODEL_CONTAINER = 'https://codeday.blob.core.windows.net/codeday-ml-ci-cd'
 
     def __init__(self):
+        self.scheduler = sched.scheduler(time.time, time.sleep)
+        self.all_models = dict()
+        self._load_models()
+        self.scheduler.run()
+
+    def _load_models(self):
+        LOGGER.debug('looking for new models in Azure blob storage')
         model_list_url = ModelLoader.AZURE_MODEL_CONTAINER + '?restype=container&comp=list&prefix=models'
         model_list_res = requests.get(model_list_url)
 
@@ -20,10 +33,16 @@ class ModelLoader:
         all_models = [blob.find('Name').text for blob in root.find('.').find('Blobs').findall('Blob')]
         all_versions = [int(x.split('.')[1][1:]) for x in all_models]
         latest = max(all_versions)
-        self.all_models = dict()
+
         self.latest_version = 'v' + str(latest)
 
         for m in all_models:
+            model_name = m.split('.')[1]
+
+            if model_name in self.all_models:
+                continue
+
+            LOGGER.info('Found new model: {}, updating model dict'.format(m))
             url = ModelLoader.AZURE_MODEL_CONTAINER + '/' + m
             res = requests.get(url)
             with open('model.tmp', 'wb') as f:
@@ -31,7 +50,9 @@ class ModelLoader:
 
             mo = load('model.tmp')
             os.remove('model.tmp')
-            self.all_models[m.split('.')[1]] = mo
+            self.all_models[model_name] = mo
+
+        self.scheduler.enter(60, 1, self._load_models)
 
 
 model_loader = ModelLoader()
