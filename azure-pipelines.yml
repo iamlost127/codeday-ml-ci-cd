@@ -1,19 +1,27 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+stages:
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - bash: |
+          echo "Building model serving docker image"
+          docker build -t codedaymodel.azurecr.io/codeday-model-serving -f model-serving/Dockerfile .
+          echo "Building backend service docker image"
+          docker build -t codedaymodel.azurecr.io/codeday-backend-service -f backend-service/Dockerfile .
 
-trigger:
-- master
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - stage: Test
+    jobs:
+      - job: TestJob
+        steps:
+          - bash: |
+              echo "testing backend service..."
+              echo "testing model-serving..."
+  
+  - stage: Deploy
+    jobs:
+      - job: 
+        steps:
+          - bash: |
+              docker login codedaymodel.azurecr.io -u $(DOCEKR_USERNAME) -p $(DOCEKR_PASSWORD)
+              docker push codedaymodel.azurecr.io/codeday-model-serving
+              docker push codedaymodel.azurecr.io/codeday-backend-service
