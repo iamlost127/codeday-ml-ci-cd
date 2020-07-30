@@ -2,7 +2,6 @@ FROM python:3.6-buster
 
 WORKDIR /app
 
-EXPOSE 5000
 
 RUN apt-get -y update
 RUN apt-get -y install unixodbc-dev
@@ -17,5 +16,11 @@ COPY backend-service/resources /app/resources
 COPY backend-service/app.py /app
 COPY config /app/config
 
-ENTRYPOINT [ "python" ]
-CMD [ "app.py" ]
+EXPOSE 443
+
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=443
+
+ENTRYPOINT [ "flask" ]
+CMD [ "run" ]
