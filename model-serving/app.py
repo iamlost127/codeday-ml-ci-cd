@@ -54,7 +54,7 @@ class ModelLoader:
             os.remove('model.tmp')
             self.all_models[model_name] = mo
 
-        self.scheduler.enter(5 * 60, 1, self._load_models)
+        self.scheduler.enter(30, 1, self._load_models)
 
 
 model_loader = ModelLoader()
