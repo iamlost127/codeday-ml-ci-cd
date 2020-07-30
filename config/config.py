@@ -1,11 +1,13 @@
 import logging
 import sched
+import threading
 import time
 
 import pyodbc
 import requests
 import yaml
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 LOGGER = logging.getLogger(__name__)
 
 
@@ -14,13 +16,15 @@ class AppConfig:
         self.config = None
         self.scheduler = sched.scheduler(time.time, time.sleep)
         self._load()
-        self.scheduler.run()
+        schedule_thread = threading.Thread(target=self.scheduler.run)
+        schedule_thread.start()
 
     def _load(self):
         with requests.get('https://codeday.blob.core.windows.net/codeday-ml-ci-cd/resources/config.yaml') as res:
             self.config = yaml.safe_load(res.text)
-        self.scheduler.enter(60, 1, self._load)
-        LOGGER.debug('loaded latest application configuration')
+
+        LOGGER.info('loaded latest application configuration')
+        self.scheduler.enter(5 * 60, 1, self._load)
 
 
 class DBConfig:

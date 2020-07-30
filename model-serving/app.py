@@ -1,6 +1,7 @@
 import logging
 import os
 import sched
+import threading
 import time
 import xml.etree.ElementTree as ET
 
@@ -10,7 +11,7 @@ import requests
 from flask import Flask, request, jsonify, Response
 from joblib import load
 
-
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 LOGGER = logging.getLogger(__name__)
 
 
@@ -22,10 +23,11 @@ class ModelLoader:
         self.scheduler = sched.scheduler(time.time, time.sleep)
         self.all_models = dict()
         self._load_models()
-        self.scheduler.run()
+        schedule_thread = threading.Thread(target=self.scheduler.run)
+        schedule_thread.start()
 
     def _load_models(self):
-        LOGGER.debug('looking for new models in Azure blob storage')
+        LOGGER.info('looking for new models in Azure blob storage')
         model_list_url = ModelLoader.AZURE_MODEL_CONTAINER + '?restype=container&comp=list&prefix=models'
         model_list_res = requests.get(model_list_url)
 
@@ -52,7 +54,7 @@ class ModelLoader:
             os.remove('model.tmp')
             self.all_models[model_name] = mo
 
-        self.scheduler.enter(60, 1, self._load_models)
+        self.scheduler.enter(5 * 60, 1, self._load_models)
 
 
 model_loader = ModelLoader()
