@@ -1,5 +1,22 @@
 stages:
-  - stage: Build
+  - stage: Test
+    jobs:
+      - job: TestJob
+        steps:
+          - bash: |
+              pip install Flask==1.1.2
+              pip install requests==2.24.0
+              pip install scikit-learn==0.23.1
+              pip install pytest==5.4.3
+
+              echo "testing model-serving..."
+              cd model-serving
+              pytest -q test/serving_test.py
+              cd ..
+
+              echo "testing backend service..."
+
+  - stage: BuildAndDeploy
     jobs:
     - job: BuildJob
       steps:
@@ -9,19 +26,6 @@ stages:
           echo "Building backend service docker image"
           docker build -t codedaymodel.azurecr.io/codeday-backend-service -f backend-service/Dockerfile .
 
-  - stage: Test
-    jobs:
-      - job: TestJob
-        steps:
-          - bash: |
-              echo "testing backend service..."
-              echo "testing model-serving..."
-  
-  - stage: Deploy
-    jobs:
-      - job: 
-        steps:
-          - bash: |
-              docker login codedaymodel.azurecr.io -u $(DOCEKR_USERNAME) -p $(DOCEKR_PASSWORD)
-              docker push codedaymodel.azurecr.io/codeday-model-serving
-              docker push codedaymodel.azurecr.io/codeday-backend-service
+          docker login codedaymodel.azurecr.io -u $(DOCEKR_USERNAME) -p $(DOCEKR_PASSWORD)
+          docker push codedaymodel.azurecr.io/codeday-model-serving
+          docker push codedaymodel.azurecr.io/codeday-backend-service
