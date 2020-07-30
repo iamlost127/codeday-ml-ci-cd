@@ -3,6 +3,9 @@ stages:
     jobs:
       - job: TestJob
         steps:
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.6'
           - bash: |
               pip install Flask==1.1.2
               pip install requests==2.24.0
