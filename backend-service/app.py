@@ -31,7 +31,7 @@ def admit_prod():
         return response.json()
 
     except exceptions.ValidationError:
-        return Response('{"error": "Invalid input json"}', content_type='application/json', status=401)
+        return Response('{"error": "Invalid input json"}', content_type='application/json', status=400)
 
 
 if __name__ == '__main__':
