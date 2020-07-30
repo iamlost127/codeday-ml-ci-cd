@@ -33,6 +33,8 @@ def main():
         LOGGER.info('Model evaluation passed, uploading new model version: {}'.format(model_name))
         _upload_file_to_azure('models/' + model_name, model_file_path)
         os.remove(model_file_path)
+    else:
+        LOGGER.info('Model evaluation failed, skip model upload, val score: {}'.format(val_score))
 
 
 if __name__ == '__main__':
