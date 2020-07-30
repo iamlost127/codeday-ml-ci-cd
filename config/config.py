@@ -24,7 +24,7 @@ class AppConfig:
             self.config = yaml.safe_load(res.text)
 
         LOGGER.info('loaded latest application configuration')
-        self.scheduler.enter(5 * 60, 1, self._load)
+        self.scheduler.enter(30, 1, self._load)
 
 
 class DBConfig:
