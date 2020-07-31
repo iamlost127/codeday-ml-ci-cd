@@ -7,7 +7,7 @@ In the pre-agile era, software teams worked on projects/features for months with
 * Integrating months of work by multiple teams lead to a large number of merge conflicts
 * multiple features developed by different teams might not be compatible with each other and this fact remains unknown until the very end
 
-### 2.How were these problems addressed?
+### 2.How were these problems addressed.
 
 _**Continuous Integration**_ is a software development practice where members of a team integrate their work frequently, usually, each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. This approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly
 
@@ -15,7 +15,7 @@ _**Continuous Delivery**_ is the ability to get changes of all types — includi
 
 The key test is that a _business sponsor could request that the current development version of the software can be deployed into production at a moment's notice_ - and nobody would bat an eyelid, let alone panic.
 
-2. **How are ML applications different from traditional software applications?**
+### 3. **How are ML applications different from traditional software applications?**
 
 Traditional Software Application Workflow
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/classic_pipeline.PNG)
