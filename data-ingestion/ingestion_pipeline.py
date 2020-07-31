@@ -42,8 +42,8 @@ def ingest():
         try:
             columns = _split_and_validate(row)
             _ingest_row(connection, columns)
-        except Exception as e:
-            LOGGER.warning('Error in row: {}, skipping...'.format(row), exec_info=sys.exc_info())
+        except Exception:
+            LOGGER.warning('Error in row: {}, skipping...'.format(row), exc_info=sys.exc_info())
 
     LOGGER.info('all standard input records consumed...')
     sys.exit()
