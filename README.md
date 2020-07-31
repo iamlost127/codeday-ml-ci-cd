@@ -26,15 +26,15 @@ change that needs to be managed and baked into the software delivery process
 
 #### Challenges in ML Applications in production:
 
-1)Team Skills
+- Team Skills
 
-2) Development
+- Development
 
-3)Testing
+- Testing
 
-4) Deployment
+- Deployment
 
-5)Production
+- Production
 
 ### Our Machine Learning CI/CD Pipeline
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/cicd.png)
