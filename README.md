@@ -28,7 +28,7 @@ change that needs to be managed and baked into the software delivery process
 ![](https://github.com/vivekkr12/codeday-ml-ci-cd/blob/master/images/ML%20applications.PNG)
 
 
-#### Components in ML Applications
+#### Components in ML Applications (Elements for ML systems. Adapted from Hidden Technical Debt in Machine Learning Systems)
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/ComponetsinML.PNG)
 
 #### Ideal Machine Learning Pipeline
