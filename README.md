@@ -4,6 +4,7 @@
 In the pre-agile era, software teams worked on projects/features for months with a predetermined day in mind for integration and deployment. This process led to some major problems
 * Integrating months of work by multiple teams lead to a large number of merge conflicts
 * multiple features developed by different teams over a long of time are sometimes incompatible with each other and this fact remains unknown until the very end
+* Since all the changes were integrated together, it was difficult to roll back to if one feature didnot work
 
 ### 2.How were these problems addressed.
 
