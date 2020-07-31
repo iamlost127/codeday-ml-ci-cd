@@ -41,5 +41,5 @@ Some of the biggest challenges associated with using ML applications in producti
 #### Components in ML Applications (Elements for ML systems. Adapted from Hidden Technical Debt in Machine Learning Systems)
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/ComponetsinML.PNG)
 
-#### Ideal Machine Learning Pipeline
-![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/MLCICD.PNG)
+### Our Machine Learning CI/CD Pipeline
+![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/cicd.png)
