@@ -28,8 +28,8 @@ change that needs to be managed and baked into the software delivery process
 ![](https://github.com/vivekkr12/codeday-ml-ci-cd/blob/master/images/ML%20applications.PNG)
 
 
-#### Machine Learning Application Workflow
-![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/MLPipeline.PNG)
-
 #### Components in ML Applications
-![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/ComponetsinML.PNG)
+![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/ComponetsinML.PNG
+
+#### Ideal Machine Learning Pipeline
+![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/classic_pipeline.PNG)
