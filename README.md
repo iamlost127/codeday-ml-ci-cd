@@ -1,7 +1,5 @@
 ## Continuous Integration and Continuous Delivery for Machine Learning
 
-## Continuous Integration and Continuous Delivery for Machine Learning
-
 ### 1. Background
 In the pre-agile era, software teams worked on projects/features for months with a predetermined day in mind for integration and deployment. This process led to some major problems
 * Integrating months of work by multiple teams lead to a large number of merge conflicts
