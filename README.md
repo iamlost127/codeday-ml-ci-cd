@@ -29,7 +29,7 @@ change that needs to be managed and baked into the software delivery process
 
 
 #### Components in ML Applications
-![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/ComponetsinML.PNG
+![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/ComponetsinML.PNG)
 
 #### Ideal Machine Learning Pipeline
-![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/classic_pipeline.PNG)
+![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/MLCICD.PNG)
