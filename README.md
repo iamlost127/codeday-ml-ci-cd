@@ -17,9 +17,9 @@ The key test is that a _business sponsor could request that the current developm
 
 ### 3. **How are ML applications different from traditional software applications?**
 
-Traditional Software Application Workflow
+#### Traditional Software Application Workflow
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/classic_pipeline.PNG)
-Machine Learning Application Workflow
+#### Machine Learning Application Workflow
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/MLPipeline.PNG)
 
 The process for developing, deploying, and continuously improving ML applications is much 
