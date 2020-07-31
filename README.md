@@ -19,8 +19,6 @@ The key test is that a _business sponsor could request that the current developm
 
 #### Traditional Software Application Workflow
 ![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/classic_pipeline.PNG)
-#### Machine Learning Application Workflow
-![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/MLPipeline.PNG)
 
 The process for developing, deploying, and continuously improving ML applications is much 
 more complex compared to traditional software, such as a web service or a mobile application. 
@@ -30,3 +28,8 @@ harder to explain, and harder to improve.
 Besides the code, changes to ML models and the data used to train them are another type of 
 change that needs to be managed and baked into the software delivery process
 ![](https://github.com/vivekkr12/codeday-ml-ci-cd/blob/master/images/ML%20applications.PNG)
+
+
+#### Machine Learning Application Workflow
+![](https://github.com/iamlost127/codeday-ml-ci-cd/blob/master/images/MLPipeline.PNG)
+
