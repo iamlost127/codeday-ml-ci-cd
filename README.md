@@ -6,7 +6,7 @@ In the pre-agile era, software teams worked on projects/features for months with
 * Features developed by different teams over the period of time were sometimes incompatible with each other and this fact remained unknown until the very end
 * Since all the changes were integrated together, it became difficult to roll back if one particular feature didnot work
 
-### 2.How were these problems addressed.
+### 2.CI/CD to the rescue.
 
 _**Continuous Integration**_ is a software development practice where members of a team integrate their work frequently, usually, each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. This approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly
 
